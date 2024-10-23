@@ -2,7 +2,7 @@ package com.example.timetracker.controller;
 
 import com.example.timetracker.dto.AuthDto;
 import com.example.timetracker.dto.RegDto;
-import com.example.timetracker.exception.NotFoundException;
+import com.example.timetracker.exception.UserAlreadyExistsException;
 import com.example.timetracker.jwt.JWTTokenProvider;
 import com.example.timetracker.entity.User;
 import com.example.timetracker.service.UserService;
@@ -28,7 +28,7 @@ public class UserController {
     private JWTTokenProvider jwtTokenProvider;
 
     @PostMapping
-    public ResponseEntity<User> registration(@RequestBody RegDto regDto) throws NotFoundException {
+    public ResponseEntity<User> registration(@RequestBody RegDto regDto) throws UserAlreadyExistsException {
         return ResponseEntity.ok(userService.save(regDto));
     }
 
