@@ -3,7 +3,7 @@ package com.example.timetracker.service;
 import com.example.timetracker.dto.RegDto;
 import com.example.timetracker.entity.Role;
 import com.example.timetracker.entity.User;
-import com.example.timetracker.exception.NotFoundException;
+import com.example.timetracker.exception.UserAlreadyExistsException;
 import com.example.timetracker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,9 +25,9 @@ public class UserService implements UserDetailsService {
         return new BCryptPasswordEncoder();
     }
 
-    public User save(RegDto regDto) throws NotFoundException {
+    public User save(RegDto regDto) throws UserAlreadyExistsException {
         if (userRepository.existsByUsername(regDto.getUsername())) {
-            throw new NotFoundException("User already exists");
+            throw new UserAlreadyExistsException("User already exists");
         }
         User user = User.builder().username(regDto.getUsername()).password(passwordEncoder().encode(regDto.getPassword())).name(regDto.getName()).roles(Set.of(Role.USER)).build();
         return userRepository.save(user);
