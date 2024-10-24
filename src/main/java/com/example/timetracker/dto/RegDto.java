@@ -1,6 +1,6 @@
 package com.example.timetracker.dto;
 
-import com.example.timetracker.entity.Role;
+import com.example.timetracker.entity.user.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
