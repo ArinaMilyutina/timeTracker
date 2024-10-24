@@ -1,4 +1,4 @@
-package com.example.timetracker.entity;
+package com.example.timetracker.entity.user;
 
 
 import org.springframework.security.core.GrantedAuthority;
