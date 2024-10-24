@@ -37,8 +37,10 @@ public class User implements UserDetails {
     @JsonManagedReference
     @OneToMany(mappedBy = "admin")
     private List<Project> projects;
+    @JsonManagedReference
     @OneToMany(mappedBy = "admin")
     private List<Task> tasks;
+
 
 
     @Override
