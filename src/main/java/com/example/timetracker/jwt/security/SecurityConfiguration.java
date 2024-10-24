@@ -24,6 +24,8 @@ public class SecurityConfiguration {
     private static final String REG_ENDPOINT = "/user";
     private static final String ADMIN = "ADMIN";
     private static final String DB = "/db/**";
+    private static final String DELETE_USER = "/user/current";
+    private static final String UPDATE_USER = "/user/updateUser";
 
     private static final String[] PUBLIC_URLS = {
             "/v2/api-docs",
@@ -46,8 +48,8 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .antMatchers(REG_ENDPOINT).permitAll()
-                .antMatchers("/user/current").authenticated()
-                .antMatchers("/user/updateUser").authenticated()
+                .antMatchers(DELETE_USER).authenticated()
+                .antMatchers(UPDATE_USER).authenticated()
                 .antMatchers(ADMIN_ENDPOINT).hasAuthority(ADMIN)
                 .antMatchers(HttpMethod.GET, PUBLIC_URLS).permitAll()
                 .antMatchers(DB).permitAll()
