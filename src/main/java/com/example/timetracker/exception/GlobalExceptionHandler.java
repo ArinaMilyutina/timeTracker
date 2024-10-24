@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(UserAlreadyExistsException.class)
+    @ExceptionHandler(EntityAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
-    public String handleUserAlreadyExists(UserAlreadyExistsException ex) {
+    public String handleUserAlreadyExists(EntityAlreadyExistsException ex) {
         return ex.getMessage();
     }
 }
