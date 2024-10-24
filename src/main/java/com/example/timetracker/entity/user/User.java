@@ -1,6 +1,8 @@
-package com.example.timetracker.entity;
+package com.example.timetracker.entity.user;
 
 
+import com.example.timetracker.entity.Project;
+import com.example.timetracker.entity.Task;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -9,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,7 +21,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -31,6 +33,12 @@ public class User implements UserDetails {
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     private Set<Role> roles;
+    @OneToMany(mappedBy = "admin")
+    private List<Project> projects;
+    @OneToMany(mappedBy = "admin")
+    private List<Task> tasks;
+
+
 
 
     @Override
