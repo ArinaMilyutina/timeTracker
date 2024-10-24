@@ -46,6 +46,8 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .antMatchers(REG_ENDPOINT).permitAll()
+                .antMatchers("/user/current").authenticated()
+                .antMatchers("/user/updateUser").authenticated()
                 .antMatchers(ADMIN_ENDPOINT).hasAuthority(ADMIN)
                 .antMatchers(HttpMethod.GET, PUBLIC_URLS).permitAll()
                 .antMatchers(DB).permitAll()
