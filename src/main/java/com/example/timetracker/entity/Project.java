@@ -1,6 +1,7 @@
 package com.example.timetracker.entity;
 
 import com.example.timetracker.entity.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Project {
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "admin_id")
     private User admin;

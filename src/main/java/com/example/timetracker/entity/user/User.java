@@ -3,6 +3,7 @@ package com.example.timetracker.entity.user;
 
 import com.example.timetracker.entity.Project;
 import com.example.timetracker.entity.Task;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -33,12 +34,11 @@ public class User implements UserDetails {
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role", nullable = false)
     private Set<Role> roles;
+    @JsonManagedReference
     @OneToMany(mappedBy = "admin")
     private List<Project> projects;
     @OneToMany(mappedBy = "admin")
     private List<Task> tasks;
-
-
 
 
     @Override
