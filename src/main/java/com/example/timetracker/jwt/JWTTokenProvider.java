@@ -1,6 +1,6 @@
 package com.example.timetracker.jwt;
 
-import com.example.timetracker.entity.Role;
+import com.example.timetracker.entity.user.Role;
 import io.jsonwebtoken.*;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
