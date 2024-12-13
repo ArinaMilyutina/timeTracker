@@ -1,7 +1,7 @@
 package com.example.timetracker.exception;
 
 
-public class EntityAlreadyExistsException extends Exception {
+public class EntityAlreadyExistsException extends RuntimeException {
     public EntityAlreadyExistsException(String message) {
         super(message);
     }
