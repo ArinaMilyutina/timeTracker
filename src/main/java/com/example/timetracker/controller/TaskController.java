@@ -39,7 +39,6 @@ public class TaskController {
             task.setProject(project1);
             task.setAdmin(currentUser);
             Task savedTask = taskService.saveTask(task);
-
             return ResponseEntity.ok(savedTask);
         }
         return ResponseEntity.badRequest().body("Проект не найден");
